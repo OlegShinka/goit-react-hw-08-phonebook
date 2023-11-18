@@ -14,7 +14,7 @@ import Contacts from 'pages/Contacts/contacts';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isRefreshing = useSelector(selectIsRefresh);
+  //const isRefreshing = useSelector(selectIsRefresh);
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
