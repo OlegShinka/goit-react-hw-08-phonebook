@@ -3,7 +3,7 @@ import { BtnStyle } from './contactCard.styled';
 import { HiTrash } from 'react-icons/hi';
 import { deleteContact } from 'redux/operations';
 
-export const Card = ({ contactName, number, id }) => {
+export const Card = ({ contactName, number, contactId }) => {
   const dispatch = useDispatch();
 
   return (
@@ -11,7 +11,10 @@ export const Card = ({ contactName, number, id }) => {
       <span>{contactName} :</span>
       <span>{number} </span>
 
-      <BtnStyle type="button" onClick={() => dispatch(deleteContact(id))}>
+      <BtnStyle
+        type="button"
+        onClick={() => dispatch(deleteContact(contactId))}
+      >
         <HiTrash />
       </BtnStyle>
     </div>

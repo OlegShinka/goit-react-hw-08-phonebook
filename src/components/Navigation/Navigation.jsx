@@ -1,26 +1,23 @@
-import { NavLink, Outlet } from 'react-router-dom';
-import styled from 'styled-components';
-const StyledLink = styled(NavLink)`
-  color: black;
-  margin-left: 35px;
-  text-decoration: none;
-  &.active {
-    color: cadetblue;
-  }
-`;
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { selectIsLoggedin } from 'redux/selectors';
+//import styled from 'styled-components';
+// const StyledLink = styled(NavLink)`
+//   color: black;
+//   margin-left: 35px;
+//   text-decoration: none;
+//   &.active {
+//     color: cadetblue;
+//   }
+// `;
 
 export const Navigation = () => {
+  const isloggedIn = useSelector(selectIsLoggedin);
   return (
-    <div>
-      <header>
-        <nav>
-          <StyledLink to="/contacts">CONTACTS</StyledLink>
-          <StyledLink to="/registration">REGISTRATION</StyledLink>
-          <StyledLink to="/login">LOGIN IN</StyledLink>
-        </nav>
-      </header>
-      <Outlet />
-    </div>
+    <nav>
+      <NavLink to="/">Home</NavLink>
+      {isloggedIn && <NavLink to="/contacts">Contacts</NavLink>}
+    </nav>
   );
 };
 export default Navigation;

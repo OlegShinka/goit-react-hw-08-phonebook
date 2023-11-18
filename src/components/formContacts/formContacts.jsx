@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { Cont, Inp, FormStyle, BtnStyle } from './form.styled';
+import { Cont, Inp, FormStyle, BtnStyle } from './formContacts.styled';
 import { TiUser, TiSortNumericallyOutline } from 'react-icons/ti';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
 
-export const Form = () => {
+export const FormContact = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
   const [name, setName] = useState('');
-  const [phone, setNumber] = useState('');
+  const [number, setNumber] = useState('');
 
   const handleChange = evt => {
     const { name, value } = evt.target;
@@ -18,7 +18,7 @@ export const Form = () => {
       case 'name':
         setName(value);
         break;
-      case 'phone':
+      case 'number':
         setNumber(value);
         break;
       default:
@@ -31,7 +31,7 @@ export const Form = () => {
     //додаємо до обєкту властивості name, num та їх значення із масивів які повертає кожен useState
     const newContact = {
       name: name,
-      phone: phone,
+      number: number,
     };
 
     if (checkContact(newContact.name, contacts)) {
@@ -72,8 +72,8 @@ export const Form = () => {
           <Inp
             autoComplete="on"
             type="tel"
-            value={phone}
-            name="phone"
+            value={number}
+            name="number"
             onChange={handleChange}
             pattern="\\+?\\d{1,4}?[ .\\-\\s]?\\(?\\d{1,3}?\\)?[ .\\-\\s]?\\d{1,4}[ .\\-\\s]?\\d{1,4}[ .\\-\\s]?\\d{1,9}"
             required
@@ -85,4 +85,4 @@ export const Form = () => {
   );
 };
 
-export default Form;
+export default FormContact;

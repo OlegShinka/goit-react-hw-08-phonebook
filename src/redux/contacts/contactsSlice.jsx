@@ -1,11 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './operations';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  logOut,
+} from '../operations';
 
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
     contacts: [],
     isLoading: false,
+    token: null,
     error: null,
   },
 
@@ -16,6 +22,7 @@ const contactsSlice = createSlice({
     [fetchContacts.fulfilled](state, action) {
       state.isLoading = false;
       state.contacts = action.payload;
+      state.token = action.payload.token;
     },
     [fetchContacts.rejected](state, action) {
       state.error = action.payload;
@@ -28,18 +35,20 @@ const contactsSlice = createSlice({
     [addContact.fulfilled](state, action) {
       state.isLoading = false;
       state.contacts = [...state.contacts, action.payload];
+      state.token = action.payload.token;
     },
 
     [addContact.rejected](state, action) {
       state.error = action.payload;
     },
 
-    //delete contact
+    // delete contact
     [deleteContact.pending](state) {
       state.isLoading = true;
     },
     [deleteContact.fulfilled](state, action) {
       state.isLoading = false;
+      state.token = action.payload.token;
       const index = state.contacts.findIndex(
         item => item.id === action.payload.id
       );
@@ -47,6 +56,11 @@ const contactsSlice = createSlice({
     },
     [deleteContact.rejected](state, action) {
       state.error = action.payload;
+    },
+    [logOut.fulfilled](state) {
+      state.contacts = [];
+      state.error = null;
+      state.isLoading = false;
     },
   },
 });
