@@ -32,6 +32,7 @@ export const logIn = createAsyncThunk(
       const { data } = await axios.post('/users/login', credentials);
       console.log('при логині', data.token);
       token.set(data.token);
+
       return data;
     } catch (e) {
       return thunkApi.rejectWithValue(e);
@@ -76,7 +77,7 @@ export const fetchContacts = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const response = await axios.get('/contacts');
-      token.set(response.data.token);
+
       return response.data;
     } catch (e) {
       return thunkApi.rejectWithValue(e);
@@ -90,7 +91,7 @@ export const addContact = createAsyncThunk(
     try {
       const response = await axios.post('/contacts', contacts);
       console.log('resp.data: ', response.data);
-      token.set(response.data.token);
+
       return response.data;
     } catch (e) {
       return thunkApi.rejectWithValue(e);
@@ -102,13 +103,7 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (contactId, thunkApi) => {
     try {
-      const response = await axios.delete('/contacts/', { contactId });
-      // token.set(response.data.token);
-      // console.log(response.data);
-
-      const state = thunkApi.getState();
-      const persistedToken = state.auth.token; //token з минулої сесії
-      token.set(persistedToken);
+      const response = await axios.delete('/contacts', contactId);
 
       return response.data;
     } catch (e) {

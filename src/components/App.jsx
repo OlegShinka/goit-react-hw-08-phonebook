@@ -14,11 +14,13 @@ import Contacts from 'pages/Contacts/contacts';
 
 export const App = () => {
   const dispatch = useDispatch();
-  //const isRefreshing = useSelector(selectIsRefresh);
+  const isRefreshing = useSelector(selectIsRefresh);
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
-  return (
+  return isRefreshing ? (
+    <b>Refreshing user ...</b>
+  ) : (
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -50,3 +52,36 @@ export const App = () => {
     </div>
   );
 };
+
+//   return (
+//     <div>
+//       <Routes>
+//         <Route path="/" element={<Layout />}>
+//           <Route index element={<Home />} />
+//           <Route
+//             path="/registration"
+//             element={
+//               <RestrictedRoute
+//                 redirectTo="/contacts"
+//                 component={<Registration />}
+//               />
+//             }
+//           />
+//           <Route
+//             path="/login"
+//             element={
+//               <RestrictedRoute redirectTo="/contacts" component={<Login />} />
+//             }
+//           />
+//           <Route
+//             path="/contacts"
+//             element={
+//               <PrivatRoute redirectTo="/login" component={<Contacts />} />
+//             }
+//           />
+//         </Route>
+//         <Route path="*" element={<NotFound />} />
+//       </Routes>
+//     </div>
+//   );
+// };
