@@ -55,7 +55,7 @@ const contactsSlice = createSlice({
       state.contacts.splice(index, 1);
     },
     [deleteContact.rejected](state, action) {
-      state.error = action.payload;
+      //state.error = action.payload;
     },
     [logOut.fulfilled](state) {
       state.contacts = [];

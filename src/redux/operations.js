@@ -64,7 +64,7 @@ export const fetchCurrentUser = createAsyncThunk(
     token.set(persistedToken);
     try {
       const { data } = await axios.get('/users/current');
-      console.log('feedback', data);
+
       return data;
     } catch (e) {
       return thunkApi.rejectWithValue(e);
@@ -103,7 +103,7 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (contactId, thunkApi) => {
     try {
-      const response = await axios.delete('/contacts', contactId);
+      const response = await axios.delete(`/contacts/${contactId}`);
 
       return response.data;
     } catch (e) {

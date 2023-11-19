@@ -23,9 +23,9 @@ export const ContactsList = () => {
   return (
     <div>
       <List>
-        {listContacts.map(({ name, number, contactId }) => (
-          <Cnt key={contactId}>
-            <Card contactName={name} number={number} id={contactId} />
+        {listContacts.map(({ name, number, id }) => (
+          <Cnt key={id}>
+            <Card contactName={name} number={number} id={id} />
           </Cnt>
         ))}
       </List>
