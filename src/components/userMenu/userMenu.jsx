@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from 'redux/operations';
-import { selectUserName } from 'redux/selectors';
+import { selectUserEmail } from 'redux/selectors';
 import { BtnStyle, SpanStyle } from './userMenu.styled';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
-  const userName = useSelector(selectUserName);
+  const userEmail = useSelector(selectUserEmail);
   return (
     <div>
-      <SpanStyle>Welcome, {userName}</SpanStyle>
+      <SpanStyle>Welcome, {userEmail}</SpanStyle>
       <BtnStyle
         type="button"
         onClick={() => {
