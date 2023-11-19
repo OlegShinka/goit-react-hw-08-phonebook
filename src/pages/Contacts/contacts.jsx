@@ -5,39 +5,35 @@ import { selectError, selectIsLoading } from 'redux/selectors';
 import Form from 'components/formContacts/formContacts';
 import { Filter } from 'components/filter/filter';
 import { ContactsList } from 'components/contactsList/contactsList';
+import { ContainerFF } from './contacts.styled';
 
 export const Contacts = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  //const isloggedIn = useSelector(selectIsLoggedin);
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
   return (
-    <div>
-      {/* {isloggedIn && (
-        <div>
-          <h2> Phonebook</h2>
-          <Form />
-          <h2>Contacts</h2>
-          <Filter />
-        </div>
-      )} */}
-      <Form />
-      <Filter />
-      {isLoading && !error && (
-        <p>
-          <b>Request in progress...</b>
-        </p>
-      )}
-      {error && (
-        <p>
-          Ups ... <b>Reload page</b>
-        </p>
-      )}
+    <ContainerFF>
+      <div>
+        <Form />
+        <Filter />
+        {isLoading && !error && (
+          <p>
+            <b>Request in progress...</b>
+          </p>
+        )}
+        {error && (
+          <p>
+            Ups ... <b>Reload page</b>
+          </p>
+        )}
+      </div>
+
       <ContactsList />
-    </div>
+    </ContainerFF>
   );
 };
 

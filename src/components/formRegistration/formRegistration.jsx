@@ -2,9 +2,9 @@ import { useDispatch } from 'react-redux';
 import {
   Cont,
   Inp,
-  FormStyle,
+  FormRegStyle,
   BtnStyle,
-} from '../formContacts/formContacts.styled';
+} from '../formRegistration/formRegistration.styled';
 import { useState } from 'react';
 import { register } from 'redux/operations';
 
@@ -47,7 +47,7 @@ export const FormRegistration = () => {
   return (
     <div>
       <Cont>
-        <FormStyle onSubmit={handleSubmit}>
+        <FormRegStyle onSubmit={handleSubmit}>
           <label> Name</label>
           <Inp
             type="text"
@@ -70,7 +70,7 @@ export const FormRegistration = () => {
             onChange={handleChange}
           ></Inp>
           <BtnStyle type="submit">Registration</BtnStyle>
-        </FormStyle>
+        </FormRegStyle>
       </Cont>
     </div>
   );

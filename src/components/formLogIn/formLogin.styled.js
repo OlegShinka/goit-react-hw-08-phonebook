@@ -8,11 +8,11 @@ export const Inp = styled.input`
 export const Cont = styled.section`
   margin-left: 20px;
 `;
-export const FormRegStyle = styled.form`
+export const FormLoginStyle = styled.form`
   display: flex;
   flex-direction: column;
   width: 300px;
-  height: 250px;
+  height: 200px;
   border: 1px solid #e6dfdf;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 10px;

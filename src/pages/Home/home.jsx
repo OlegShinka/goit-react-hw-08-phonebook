@@ -1,7 +1,7 @@
 export const Home = () => {
   return (
     <div>
-      <h2>PHONEBOOK</h2>
+      <h2>Your personal phonebook, welcome page. </h2>
     </div>
   );
 };

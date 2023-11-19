@@ -7,7 +7,7 @@ export const Filter = () => {
   return (
     <div>
       <Cont>
-        <h2> Find contacts by name</h2>
+        <h3> Find contacts by name</h3>
         <Inp
           type="text"
           name="filter"

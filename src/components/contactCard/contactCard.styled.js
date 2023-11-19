@@ -7,3 +7,8 @@ export const BtnStyle = styled.button`
     color: #ffff;
   }
 `;
+
+export const ContainerCard = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
